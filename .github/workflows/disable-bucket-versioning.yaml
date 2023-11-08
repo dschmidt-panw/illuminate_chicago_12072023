@@ -1,0 +1,26 @@
+name: Disable Versioning
+
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+  
+jobs:
+  tf_fmt:
+    name: Disable bucket versioning
+    runs-on: ubuntu-latest
+    env: 
+      USER_COUNT: '2'
+      
+    steps:
+    - name: Set up AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: "us-east-1"
+    - name: Disable bucket versioning
+      run: |
+        for (( c=1; c<=$USER_COUNT; c++ ))
+        do
+          aws s3api put-bucket-versioning --bucket "illuminate-chicago-bucket-for-illuminate-user-$c"  --versioning-configuration Status=Suspended
+        done

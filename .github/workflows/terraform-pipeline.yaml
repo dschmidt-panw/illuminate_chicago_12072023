@@ -26,6 +26,17 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: "us-east-1"
         
+    - name: Run Prisma Cloud 
+      id: prisma-cloud
+      uses: bridgecrewio/checkov-action@master 
+      env:
+        PRISMA_API_URL: ${{ secrets.PRISMA_API_URL }}
+      with:
+        api-key: ${{ secrets.PC_API_KEY }}
+        soft_fail: false
+        directory: ./
+        use_enforcement_rules: true
+        
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
       with:
