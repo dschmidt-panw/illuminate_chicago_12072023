@@ -4,7 +4,7 @@ resource "aws_s3_bucket" "illuminate_user_2" {
   tags = {
     Owner        = "illuminate_user_2"
     Environment = "Illuminate Chicago Workshop 12072023"
-    Replace_this_tag  = "Hello Illuminate Workshop"
+    illuminate_user_2  = "Hello Illuminate Workshop"
   }
 
   force_destroy = true
@@ -13,14 +13,14 @@ resource "aws_s3_bucket" "illuminate_user_2" {
 resource "aws_s3_bucket_versioning" "s3_versioning_for_illuminate_user_2" {
   bucket = aws_s3_bucket.illuminate_user_2.id
   versioning_configuration {
-    status = "Suspended"
+    status = "Enabled"
   }
 }
 
 resource "aws_s3_bucket_public_access_block" "illuminate_user_2_bucket_access_policy" {
   bucket = aws_s3_bucket.illuminate_user_2.id
-  block_public_acls   = false
-  block_public_policy = false
-  restrict_public_buckets = false
-  ignore_public_acls = false
+  block_public_acls   = true
+  block_public_policy = true
+  restrict_public_buckets = true
+  ignore_public_acls = true
 }
