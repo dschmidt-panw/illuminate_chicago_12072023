@@ -20,7 +20,7 @@ jobs:
         aws-region: "us-east-1"
     - name: Disable bucket versioning
       run: |
-        for (( c=$USER_COUNT; c<=$USER_COUNT; c++ ))
+        for (( c=1; c<=$USER_COUNT; c++ ))
         do
           aws s3api put-bucket-versioning --bucket illuminate-chicago-bucket-for-illuminate-user-$c --versioning-configuration Status=Suspended
         done
