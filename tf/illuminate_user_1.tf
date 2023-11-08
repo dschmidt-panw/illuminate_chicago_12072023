@@ -4,7 +4,7 @@ resource "aws_s3_bucket" "illuminate_user_1" {
   tags = {
     Owner        = "illuminate_user_1"
     Environment = "Illuminate Chicago Workshop 12072023"
-    illuminate_user_1  = "Hello Illuminate Workshop!"
+    illuminate_user_1  = "Hello Illuminate Workshop"
   }
 
   force_destroy = true
