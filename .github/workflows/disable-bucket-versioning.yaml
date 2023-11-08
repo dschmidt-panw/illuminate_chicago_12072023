@@ -9,7 +9,7 @@ jobs:
     name: Disable bucket versioning
     runs-on: ubuntu-latest
     env: 
-      USER_COUNT: '1'
+      USER_COUNT: '2'
       
     steps:
     - name: Set up AWS Credentials
