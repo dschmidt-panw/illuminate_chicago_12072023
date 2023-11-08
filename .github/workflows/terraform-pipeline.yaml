@@ -35,6 +35,7 @@ jobs:
         api-key: ${{ secrets.PC_API_KEY }}
         soft_fail: false
         directory: ./
+        use_enforcement_rules: true
         
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
