@@ -8,6 +8,9 @@ jobs:
   tf_fmt:
     name: Disable bucket versioning
     runs-on: ubuntu-latest
+    env: 
+      USER_COUNT: '1'
+      
     steps:
     - name: Set up AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
@@ -17,4 +20,7 @@ jobs:
         aws-region: "us-east-1"
     - name: Disable bucket versioning
       run: |
-        aws s3api put-bucket-versioning --bucket illuminate-chicago-bucket-for-illuminate-user-1 --versioning-configuration Status=Suspended
+        for (( c=$USER_COUNT; c<=$USER_COUNT; c++ ))
+        do
+          aws s3api put-bucket-versioning --bucket illuminate-chicago-bucket-for-illuminate-user-$c --versioning-configuration Status=Suspended
+        done
