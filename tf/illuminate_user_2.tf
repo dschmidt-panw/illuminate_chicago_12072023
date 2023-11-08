@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "illuminate_user_2" {
-  bucket        = "illuminate-chicago-bucket-for-illuminate-user-1"
+  bucket        = "illuminate-chicago-bucket-for-illuminate-user-2"
 
   tags = {
     Owner        = "illuminate_user_2"
