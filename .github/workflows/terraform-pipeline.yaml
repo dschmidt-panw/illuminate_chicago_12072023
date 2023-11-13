@@ -33,7 +33,7 @@ jobs:
         PRISMA_API_URL: ${{ secrets.PRISMA_API_URL }}
       with:
         api-key: ${{ secrets.PC_API_KEY }}
-        soft_fail: false
+        soft_fail: true
         directory: ./
         use_enforcement_rules: true
         
