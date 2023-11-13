@@ -9,7 +9,7 @@ jobs:
     name: Disable bucket versioning
     runs-on: ubuntu-latest
     env: 
-      USER_COUNT: '2'
+      USER_COUNT: '1'
       
     steps:
     - name: Set up AWS Credentials
@@ -22,5 +22,5 @@ jobs:
       run: |
         for (( c=1; c<=$USER_COUNT; c++ ))
         do
-          aws s3api put-bucket-versioning --bucket "illuminate-chicago-bucket-for-illuminate-user-$c"  --versioning-configuration Status=Suspended
+          aws s3api put-bucket-versioning --bucket "illuminate-chicago-12092023-bucket"  --versioning-configuration Status=Suspended
         done
